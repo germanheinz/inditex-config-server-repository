@@ -1,3 +1,19 @@
+logging:
+  level:
+    ROOT: DEBUG
+    com.microservices.demo: DEBUG
+
+log:
+  appName: elastic-query-service
+
+elastic-config:
+  index-name: inditex-index
+  connection-url: localhost
+  connect-timeout-ms: 5000
+  socket-timeout-ms: 30000
+  is-repository: true
+  port: 9200
+
 elastic-query-service:
   version: v1
   custom-audience: elastic-query-service
@@ -18,25 +34,10 @@ elastic-query-service:
     uri: "http://gateway-service/analytics-service/get-word-count-by-word/{word}"
     accept: ${elastic-query-service.webclient.accept-type}
 
-elastic-config:
-  index-name: inditex-index
-  connection-url: localhost
-  connect-timeout-ms: 5000
-  socket-timeout-ms: 30000
-  is-repository: true
-  port: 9200
-
-elastic-query-config:
-  text-field: text
-
-logging:
-  level:
-    ROOT: DEBUG
-    com.microservices.demo: DEBUG
-
-log:
-  appName: elastic-query-service
-
-
 server:
   port: 8183
+  servlet:
+    context-path: /
+
+  elastic-query-config:
+    text-field: text
