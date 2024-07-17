@@ -18,11 +18,6 @@ elastic-query-service:
     uri: "http://gateway-service/analytics-service/get-word-count-by-word/{word}"
     accept: ${elastic-query-service.webclient.accept-type}
 
-server:
-  port: 8183
-  servlet:
-    context-path: /
-
 elastic-config:
   index-name: inditex-index
   connection-url: localhost
@@ -41,3 +36,7 @@ logging:
 
 log:
   appName: elastic-query-service
+
+
+server:
+  port: 8183
