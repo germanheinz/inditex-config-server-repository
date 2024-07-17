@@ -1,3 +1,13 @@
+spring:
+  webflux:
+    base-path: /reactive-elastic-query-web-client
+  thymeleaf:
+    cache: false
+    reactive:
+      max-chunk-size: 8192
+  codec:
+    max-in-memory-size: 25MB
+
 elastic-query-web-client:
   webclient:
     connect-timeout-ms: 10000
@@ -12,15 +22,13 @@ elastic-query-web-client:
     uri: "/get-document-by-text"
     accept: 'application/vnd.api.v1+json'
 
+retry-config:
+  initial-interval-ms: 1000
+  max-interval-ms: 10000
+  multiplier: 2.0
+  maxAttempts: 3
+  sleep-time-ms: 2000
+
+
 server:
   port: 8184
-
-spring:
-  webflux:
-    base-path: /reactive-elastic-query-web-client
-  thymeleaf:
-    cache: false
-    reactive:
-      max-chunk-size: 8192
-  codec:
-    max-in-memory-size: 25MB
